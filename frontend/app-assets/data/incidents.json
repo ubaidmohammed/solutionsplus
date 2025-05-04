@@ -1,0 +1,25 @@
+﻿{
+  "incidents": [
+    {
+      "_id": "6293e94c3f39a709cc9ea0f8",
+      "AgentId": "6290ac3b001b97e96d889b39",
+      "NatureType": 2,
+      "Department": "6290d32db59b8f287664c208",
+      "CallerName": "Ubaid",
+      "CallerNumber": "5588663344",
+      "URN": "SOC-MU-290522-004",
+      "DateCreated": "ISODate(\"2022-05-30T03:14:44.808+05:30\")",
+      "Status": 1
+    },
+    {
+      "AgentId": "6290ac3b001b97e96d889b39",
+      "NatureType": 1,
+      "Department": "6290d32db59b8f287664c093",
+      "CallerName": "Reshma Patel",
+      "CallerNumber": "9988665566",
+      "URN": "SOC-MU-010622-002",
+      "DateCreated": "ISODate(\"2022-06-01T23:34:55.455+05:30\")",
+      "Status": 1
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+﻿<div class="row">
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="ddlRange">Select Time Range</label>
+        <select class="select form-select form-control" id="ddlRange" onchange="incidents.changeReportDate();">
+            <option value="7">Last 7 Days</option>
+            <option value="30">Last One Month</option>
+            <option value="90">Last Three Months</option>
+            <option value="0">Year to Date</option>
+            <option value="-1">All</option>
+        </select>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="startdate">Date Reported (From):</label>
+        <input type="text" id="startdate" class="form-control flatpickr-basic date-picker flatpickr-input active" placeholder="DD-MM-YYYY" readonly="readonly">
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="enddate">Date Reported (To):</label>
+        <input type="text" id="enddate" class="form-control flatpickr-basic date-picker flatpickr-input active" placeholder="DD-MM-YYYY" readonly="readonly">
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="ddlDepartment">Select Agent Name:</label>
+            <select class="select2 form-select form-control" id="ddlAgent" data-fieldname="Agent" onselect="console.log('selected')">
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    &nbsp;
+</div>
+<div class="row">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="ddlCallType">Select Call Type</label>
+            <select class="select form-select form-control" id="ddlCallType">
+                <option value="">All</option>
+                <option value="28">One Number Call</option>
+                <option value="24">Theft/Missing Products </option>
+                <option value="2">Detained </option>
+                <option value="3">Recovery </option>
+                <option value="4">StandOut </option>
+                <option value="5">Banned Person </option>
+                <option value="6">Theft Other </option>
+                <option value="7">First Aid </option>
+                <option value="8">Pre Alarm </option>
+                <option value="25">Fire Alarm </option>
+                <option value="9">Emergency Services CallOut </option>
+                <option value="10">Customer Relation </option>
+                <option value="26">Customer Lift Entrapment </option>
+                <option value="11">Harassment </option>
+                <option value="12">Anti Social Behaviour </option>
+                <option value="13">Aggressive Custumer </option>
+                <option value="14">Intoxicated Person </option>
+                <option value="15">Events </option>
+                <option value="16">Protests </option>
+                <option value="17">Car Park </option>
+                <option value="18">Loading Bay </option>
+                <option value="19">External Activity </option>
+                <option value="20">Internal Activity </option>
+                <option value="21">CCTV Monitoring Request </option>
+                <option value="22">Staff Incident </option>
+                <option value="23">Footage Request </option>
+                <option value="24">Missing Products</option>
+                <option value="25">Fire Alarm</option>
+                <option value="26">Customer Lift Entrapment</option>
+                <option value="27">Missing Person</option>
+
+            </select>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="ddlDepartment">Select Department</label>
+            <select class="select2 form-select form-control" id="ddlDepartment" data-fieldname="Department">
+                <option value="">All Departments</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="ddlDepartment">Select Type:</label><br />
+        <div class="btn-group">
+            <button type="button" class="btn btn-success waves-effect waves-float waves-light" onclick="incidents.incidentReports();">Generate Report</button>&nbsp;
+            <button type="button" class="btn btn-warning waves-effect waves-float waves-light" onclick="incidents.exportToExcel();">Download Excel</button>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <br />
+        <div class="btn-group">
+            <button type="button" class="btn btn-info waves-effect waves-float waves-light" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew()">Add Incident</button>
+            <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split waves-effect waves-float waves-light" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" style="">
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('onenumbercall')">One Number Call</a>
+                <!-- <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('theft')">Theft</a>-->
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('missingproducts')">Theft/Missing Products</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('detained')">Detained</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('recovery')">Recovery</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('recovery','standout')">Stand out</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('bannedperson')">Banned person</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="return false;" style="font-weight:bold;">##Security response required##</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('theftother')" style="margin-left:10px;">Theft other</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('firstaid')" style="margin-left:10px;">First aid</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('prealarm')" style="margin-left:10px;">Pre alarm</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('prealarm','firealarm')" style="margin-left:10px;">Fire alarm</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('customerrelation')" style="margin-left:10px;">Costumer Relation</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('customerliftentrapment')" style="margin-left:10px;">Costumer Lift Entrapment</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('missingperson')" style="margin-left:10px;">Missing person</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('harassment')" style="margin-left:10px;">Harassment</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('harassment','antisocialbehaviour')" style="margin-left:10px;">Anti social behaviour</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('aggressivecustumer')" style="margin-left:10px;">Aggressive costumer</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('aggressivecustumer','intoxicatedperson')" style="margin-left:10px;">Intoxicated Person</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('carpark')" style="margin-left:10px;">Car park</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('carpark','loadingbay')" style="margin-left:10px;">Loading bay</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('carpark','externalactivity')" style="margin-left:10px;">External activity</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('carpark','internalactivity')" style="margin-left:10px;">Internal activity</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('emergencyservicescallout')">Emergency services required or call out.</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('cctvmonitoringrequest')">CCTV Monitoring request</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('events')">Events</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('events', 'protests')">Protests</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('staffincident')">Staff incident</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalwindow" onclick="incidents.addNew('footagerequest')">Footage request</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Basic table -->
+<section id="basic-datatable">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-datatable">
+                    <div class="dataTables_wrapper dt-bootstrap5 no-footer" style="padding:10px;">
+                        <table class="datatables-basic table" id="tableIncidentList">
+                            <thead>
+                                <tr>
+                                    <th>URN</th>
+                                    <th>Date & Time</th>
+                                    <th>SOC Analyst</th>
+                                    <th>Nature of call</th>
+                                    <th>Department</th>
+                                    <th>Value</th>
+                                    <th>Caller Name</th>
+                                    <th>Caller Number</th>
+                                    <th>Confirm Footage</th>
+                                    <th>ES Called</th>
+                                    <th>SL Submitted</th>
+                                </tr>
+                            </thead>
+                            <tbody id="incidentListGridBody" style="font-size:12px !important;">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Basic table -->
+
+<script>
+    incidents.populateDept($('#ddlDepartment'));
+    incidents.populateAgents();
+    var datePicker = $('.date-picker');
+    // Default
+    if (datePicker.length) {
+        datePicker.flatpickr();
+    }
+</script>

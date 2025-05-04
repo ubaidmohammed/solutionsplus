@@ -1,0 +1,421 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title md-title" id="modalHeader">Create New Branch</h5>
+        <div class="modal-close-btn">
+            <a class="btn-default text-center text-dark" data-bs-dismiss="modal" aria-label="Close">
+                <i class="btn-icon fa fa-times" id="closeModal"></i>
+            </a>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="modal-add-new-user">
+            <div class="profile-info-wrap" id="profile-info-wrap">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary-bg d-none" onclick="" id="">Save</button>
+        <button type="button" class="btn btn-primary-bg" onclick="submitFormfn('#modal',branchMrof)" id="formSubmitBtn">Create Branch</button>
+    </div>
+</div>
+<div class="profile-page-wrap" id="profile-page-wrap"></div>
+
+<script>
+    var branchMrof = new Mrof();
+    function renderForm(id, getRecordAPI, AddContentClass,options) {
+        var activeReloadSec = JSON.parse(sessionStorage.getItem('parentTab')).li;
+        gobalCurrMrof = branchMrof;
+        mrofArr.push({
+            ModalId: '',
+            Mrof: branchMrof
+        });
+        var fields = [
+            {
+                "field": "head",//entitry field name, unique name
+                "type": "head",
+                "label": "Company Info",
+                "id": "companyInfoHeader"
+            }, {
+                "field": "CompanyName",//entitry field name, unique name
+                "type": "ddl",
+                "label": "Company Name",
+                "isrequired": 1,
+                "size": 6,
+                "fn": 'handleCompanyNameSelect(this)',
+                "error": "Please Select Company Name",
+                "defaultOption": "Select Company Name",
+                "optionapi": {
+                    api: "ClientCompany/GetClientCompanyForBranch",
+                    text: "CompanyName",
+                    val: "CompanyName",
+                    additionalData: "CompanyId"
+                },
+            },
+            {
+                "field": "CompanyId",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Company ID",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter Valid Company ID",
+                "disabled": true,
+            }, {
+                "field": "AddClientCompany",//entitry field name, unique name
+                "type": "button",
+                "inputtype": "button",
+                "label": "Add New Client Company",
+                "isrequired": 0,
+                "size": 3,
+                "fn": `ModalBtnsFn('Company/GetClientById','company/client/addForm.html',0,'-1',ClientCompanyDropDowns,"${activeReloadSec}")`
+            }, {
+                "field": "head",//entitry field name, unique name
+                "type": "head",
+                "label": "Branch Info",
+                "id": "branchInfoHeader"
+            },
+            {
+                "field": "Name",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Branch Name",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter valid Branch Name",
+                "placeholdertext": "Please enter Branch Name",
+            }, {
+                "field": "BranchID",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Branch ID",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter valid Branch ID",
+                "disabled": true,
+            }, {
+                "field": "Website",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Branch Website",
+                "isrequired": 0,
+                "size": 6,
+                "error": "Please enter valid Website",
+                "placeholdertext": "Please enter Website"
+            }, {
+                "field": "LinkedIn",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Branch LinkedIn",
+                "isrequired": 0,
+                "size": 6,
+                "error": "Please enter valid LinkedIn",
+                "placeholdertext": "Please enter LinkedIn"
+            }, {
+                "field": "StreetAddress1",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Street Address or Line 1",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter valid Street Address",
+                "placeholdertext": "Please enter Street Address"
+            }, {
+                "field": "StreetAddress2",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Street Address or Line 2",
+                "isrequired": 0,
+                "size": 6,
+                "error": "Please enter valid Street Address",
+                "placeholdertext": "Please enter Street Address"
+            }, {
+                "field": "Country",//entitry field name, unique name
+                "type": "ddl",
+                "label": "Country",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter valid Country",
+                "defaultOption": "Select Country",
+                "fn": 'handleFunctionState(this)',
+                "optionapi": {
+                    api: "Common/GetAllCountries",
+                    text: "CountryName",
+                    val: "CountryId",
+                    additionalData: "Id"
+                }
+            }, {
+                "field": "State",//entitry field name, unique name
+                "type": "ddl",
+                "label": "State",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter valid State",
+                "options": [{ "label": "Select State", val: "", StateName: "" },],
+                "optionapi": {
+                    api: "",
+                    text: "StateName",
+                    val: "Id",
+                    additionalData: "CountryId"
+                }
+            }, {
+                "field": "City",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "City",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter valid City",
+                "placeholdertext": "Please enter City"
+            }, {
+                "field": "ZipCode",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Zip Code",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter valid Zip Code",
+                "placeholdertext": "Please enter Zip Code"
+            },  {
+                "field": "head",//entitry field name, unique name
+                "type": "head",
+                "label": "REBO Information",
+                "id": 'reboInfoHeader'
+            }, {
+                "field": "ExistingBranch",//entitry field name, unique name
+                "type": "ddl",
+                "label": "Existing Branch?",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please Select Valid Type",
+                "options": [
+                    { "label": "Select Type", val: "" },
+                    { "label": "Yes", val: "Yes" },
+                    { "label": "No", val: "No" },
+                ],
+            }, {
+                "field": "FirstInvoiceDate",//entitry field name, unique name
+                "type": "date",
+                "inputtype": "date",
+                "label": "First Invoice Date",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please Select valid Date",
+                "placeholdertext": "MM/DD/YYYY"
+            }, {
+                "field": "LeadSourceType",//entitry field name, unique name
+                "type": "ddl",
+                "label": "Lead Source Type",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please Select Type",
+                "fn": 'handleLeadSourceType(this)',
+                "options": options?.BranchLeadSourceType || [],
+            }, {
+                "field": "LeadSourceDetails",//entitry field name, unique name
+                "type": "ddl",
+                "label": "Lead Source Details",
+                "isrequired": 1,
+                "size": 6,
+                "fn": "handleLeadSourceDetails(this)",
+                "error": "Please Select Details",
+                "options": [
+                    { "label": "Select Option", val: "" },
+                    { "label": "Yes", val: "Yes" },
+                    { "label": "No", val: "No" },
+                ],
+            }, {
+                "field": "SalespersonName",//entitry field name, unique name
+                "type": "ddl",
+                "label": "REBO Salesperson",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please Select Salesperson Name",
+                "options": options?.BranchSalesPersonName || []
+            }, {
+                "field": "TradeShow",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Trade Show Name",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please Enter valid Trade Show Name",
+            }, {
+                "field": "LeadClientCompany",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Client Company Name",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please Select valid Client Company Name",
+            }, {
+                "field": "LeadClientContact",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text",
+                "label": "Client Contact Name",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please Select valid Client Contact Name",
+            } , {
+                "field": "SoftwarePlatform",//entitry field name, unique name
+                "type": "ddl",
+                "label": 'Software Platform',
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter Software Platform",
+                "options": options?.BranchSoftwarePlatform || []
+            }, {
+                "field": "AccountManagerSales",//entitry field name, unique name
+                "type": "ddl",
+                "label": 'REBO Account Manager - Sales',
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter Account Manager",
+                "options": accountManager
+            }, {
+                "field": "AccountManagerOperations",//entitry field name, unique name
+                "type": "ddl",
+                "label": 'REBO Account Manager - Operations',
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter Account Manager",
+                "defaultOption": "Select Account Manager",
+                "optionapi": {
+                    api: "Common/GetAccountManager",
+                    text: "Name",
+                    val: "Name",
+                    additionalData: "Id"
+                },
+            }, {
+                "field": "head",//entitry field name, unique name
+                "type": "head",
+                "label": " ",
+                "id": "CreateHeader"
+            } , {
+                "field": "CreateDate",//entitry field name, unique name
+                "type": "text",
+                "inputtype": "text", 
+                "label": "Create Date",
+                "isrequired": 1,
+                "size": 6,
+                "error": "Please enter valid Create Date",
+                "disabled": true,
+
+            }
+        ]
+
+        branchMrof.resetmrof();
+        var d = [];
+        branchMrof.tempId = id;
+        branchMrof.recordId = id;
+        branchMrof.individualValidation = true;
+        branchMrof.formsuccess = (res) => {
+            successForm(res, branchGrid, `Branch has been Created successfully`, 'Same Branch Name Already Exist', ['CompanyName', 'BranchName']);
+           
+        };
+        branchMrof.aftercomplete = function () {
+
+        }
+
+        if (id != "-1") {
+            $("#formSubmitBtn").html("Save Branch");
+            $("#modalHeader").html("Edit Branch");
+            var req = '{ "id":"' + id + '"}';
+            common.postApi(getRecordAPI, req, function (d) {
+                branchMrof.formsuccess = (res) => {
+                    successForm(res, branchGrid, `Branch has been Updated successfully`, 'Same Branch Name Already Exist', ['CompanyName', 'BranchName']);
+                    
+                };
+                branchMrof.init(fields, AddContentClass, d, "Branch/CreateOrUpdate", function () {
+
+                    //handleKeyUp(branchMrof.containerId, 'text-Name', 'text-BranchID', 'Branch/GetUID');
+
+                    if ($("#profile-page-wrap").html() !== "") {
+                        $(".modal-content").html('');
+                    }
+
+                    handleFunctionState($("#ddl-Country")).then((res) => {
+                        if (!res)
+                            return;
+
+                        var $ddlState = $("#ddl-State");
+                        $ddlState.val(d.State).select2();
+                        var value = $ddlState.val();
+                        if (!value) $ddlState.val($ddlState.val(`${$ddlState} option:first`).val()).select2();
+                    });
+                    updateFormData(d);
+                });
+            });
+        } else {
+            branchMrof.init(fields, AddContentClass, d, "Branch/CreateOrUpdate", function () {
+                
+                hideFormFieldOnLoad();
+                handleKeyUp(branchMrof.containerId, 'text-Name', 'text-BranchID', 'Branch/GetUID');
+                $('#' + branchMrof.containerId).find("#text-CreateDate").val(getCurrentDate());
+
+            });
+        }
+    }
+    
+    function updateFormData(res) {
+        const leadSourceType = $(`#${branchMrof.containerId} #ddl-LeadSourceType`).val();
+        
+        leadSourceUpdate();
+        $(`#${branchMrof.containerId} #ddl-LeadSourceDetails`).val(res.LeadSourceDetails);
+        if (leadSourceType !== '4') {
+            common.toggleElems(['text-LeadClientCompany', 'text-LeadClientContact'], 'hide');
+        }
+        if(leadSourceType !== "3"){
+            common.toggleElems(['ddl-SalespersonName','text-TradeShow'], 'hide');
+            return;
+        }
+
+        const leadSourceDetails = $(`#${branchMrof.containerId} #ddl-LeadSourceDetails`).val();
+        if (!['Call', 'Email', 'LinkedIn Message'].includes(leadSourceDetails)) {
+            common.toggleElems(['ddl-SalespersonName'], 'hide');
+        }
+        if (leadSourceDetails !== 'TradeShow') {
+            common.toggleElems(['text-TradeShow'], 'hide');
+        }
+
+    }
+
+
+    function hideFormFieldOnLoad() {
+        common.toggleElems(['text-LeadClientCompany', 'text-LeadClientContact', 'ddl-LeadSourceDetails', 'ddl-SalespersonName', 'text-TradeShow'], 'hide');
+    }
+
+    function handleLeadSourceDetails(e) {
+        var {Mrof} = lastArrElm(mrofArr);
+        var containerId = Mrof.containerId;
+        var $container = $(`#${containerId}`);
+
+        if($container.find(`#ddl-LeadSourceType`).val() !== "3"){
+            common.toggleElems(['ddl-SalespersonName','text-TradeShow'], 'hide');
+            return;
+        }
+        var data = $(e).val().trim().toLowerCase();
+        switch (data) {
+            case "call":
+            case "email":
+            case "linkedin message":
+                common.toggleElems(['ddl-SalespersonName'], 'show');
+                addIsRequiredToElements(['ddl-SalespersonName']);
+                common.toggleElems(['text-TradeShow'], 'hide');
+                common.unselect2val(['ddl-SalespersonName']);
+                break;
+            case "tradeshow":
+                common.toggleElems(['text-TradeShow'], 'show');
+                addIsRequiredToElements(['text-TradeShow']);
+                common.toggleElems(['ddl-SalespersonName'], 'hide');
+                common.unselect2val(['ddl-SalespersonName']);
+                common.EmptyFieldValues(['text-TradeShow']);
+                break;
+            default:
+                common.toggleElems(['ddl-SalespersonName','text-TradeShow'], 'hide');
+                common.unselect2val(['ddl-SalespersonName']);
+                common.EmptyFieldValues(['text-TradeShow']);
+            break;
+        }
+    }
+
+</script>

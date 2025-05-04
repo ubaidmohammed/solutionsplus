@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="loading dark-layout" lang="en" data-layout="dark-layout" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="PIXINVENT">
+    <title>SOLUTIONS PLUS</title>
+    <link rel="apple-touch-icon" href="../app-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../app-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/forms/select/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/charts/apexcharts.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/extensions/toastr.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/pickers/pickadate/pickadate.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
+    <!-- END: Vendor CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/themes/bordered-layout.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/themes/semi-dark-layout.css">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/core/menu/menu-types/horizontal-menu.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/pages/dashboard-ecommerce.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/plugins/charts/chart-apex.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/plugins/forms/pickers/form-flat-pickr.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/plugins/forms/pickers/form-pickadate.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/css/plugins/extensions/ext-component-sweet-alerts.css">
+    <!-- END: Page CSS-->
+    <!-- BEGIN: DAta Table CSS-->
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/tables/datatable/responsive.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/tables/datatable/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css">
+    <!-- END: DAta Table CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <!-- END: Custom CSS-->
+    <style>
+        .confirm-green {
+            background-color: green !important;
+            color: white !important;
+        }
+
+        .confirm-orange {
+            background-color: coral !important;
+            color: black !important;
+        }
+    </style>
+</head>
+<!-- END: Head-->
+<!-- BEGIN: Body-->
+
+<body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="">
+
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center" data-nav="brand-center">
+        <div class="navbar-header d-xl-block d-none">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="navbar-brand">
+                        <h2 class="brand-text mb-0">SOLUTIONS PLUS</h2>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-container d-flex content">
+            <div class="bookmark-wrapper d-flex align-items-center">
+                <ul class="nav navbar-nav d-xl-none">
+                    <li class="nav-item"><a class="nav-link menu-toggle" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu ficon"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav align-items-center ms-auto">
+
+                <li class="nav-item dropdown dropdown-user">
+                    <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">John Doe</span><span class="user-status">Admin</span></div><span class="avatar"><img class="round profile-avatar" src="../app-assets//images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
+                        <a class="dropdown-item" href="page-profile.html"><i class="me-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="#" onclick="user.logout();">
+                            <i class="me-50" data-feather="power"></i> Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- END: Header-->
+    <!-- BEGIN: Main Menu-->
+    <div class="horizontal-menu-wrapper">
+        <div class="header-navbar navbar-expand-sm navbar navbar-horizontal floating-nav navbar-dark navbar-shadow menu-border container-xxl" role="navigation" data-menu="menu-wrapper" data-menu-type="floating-nav">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav flex-row">
+                    <li class="nav-item me-auto">
+                        <a class="navbar-brand" href="../html/ltr/horizontal-menu-template-dark/index.html">
+                            <h2 class="brand-text mb-0">Vuexy</h2>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i></a></li>
+                </ul>
+            </div>
+            <div class="shadow-bottom"></div>
+            <!-- Horizontal menu content-->
+            <div class="navbar-container main-menu-content" data-menu="menu-container">
+                <!-- include ../../../includes/mixins-->
+                <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xxl p-0">
+            <div class="content-header row">
+            </div>
+            <div class="content-body" id="page-content-body">
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+    <!-- Modal Div -->
+    <!-- Modal -->
+
+    <div class="modal fade text-start" id="modalwindow" tabindex="-1" aria-labelledby="myModalLabel16" data-bs-backdrop="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content" style="border: 1px white solid !important">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel16">Extra Large Modal</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin:10px;"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="modalButton">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Div End-->
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light footer-shadow">
+        <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2025<a class="ms-25" href="https://www.reflectionsinfomedia.com" target="_blank">SOLUTIONS PLUS, a Mubadala Company</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-end d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
+    </footer>
+    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+    <!-- END: Footer-->
+    <!-- BEGIN: Vendor JS-->
+    <script src="../app-assets/vendors/js/vendors.min.js"></script>
+
+    <!-- BEGIN Vendor JS-->
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="../app-assets/vendors/js/ui/jquery.sticky.js"></script>
+    <script src="../app-assets/vendors/js/charts/apexcharts.min.js"></script>
+    <script src="../app-assets/vendors/js/extensions/toastr.min.js"></script>
+    <script src="../app-assets/vendors/js/charts/chart.min.js"></script>
+    <script src="../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+    <script src="../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="../app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+    <script src="../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+    <script src="../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
+    <script src="../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
+    <script src="../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+    <script src="../app-assets/js/core/mustache.min.js"></script>
+    <script src="../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+
+    <!-- END: Page Vendor JS-->
+    <!-- BEGIN: Theme JS-->
+    <script src="../app-assets/js/core/app-menu.js"></script>
+    <script src="../app-assets/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+    <!-- BEGIN: Page JS-->
+    <!-- Should be removed once APIs are integrated-->
+    <script src="../app-assets/js/scripts/custom/DataJson.js"></script>
+    <script src="../app-assets/js/scripts/custom/config.js"></script>
+    <script src="../app-assets/js/scripts/custom/common.js"></script>
+    <script src="../app-assets/js/scripts/custom/users.js"></script>
+    <script src="../app-assets/js/scripts/custom/dashboard.js"></script>
+    <script src="../app-assets/js/scripts/components/components-modals.js"></script>
+    <script src="../app-assets/js/scripts/extensions/ext-component-sweet-alerts.js"></script>
+    <script src="../node_modules/xobni-mrof/xobni.js"></script>
+    <script src="../node_modules/xobni-mrof/mrof.js"></script>
+
+    <!-- END: Page JS-->
+    <script id="incidentListRow" type="text/template">
+        {{#incidents}}
+        <tr>
+            <td onclick="incidents.viewIncident('{{natureType}}', '{{objectId}}')">{{urn}}</td>
+            <td>{{iDate}}</td>
+            <td>{{agent.name}}</td>
+            <td>{{calltype}}</td>
+            <td>{{flr}}, {{dept.name}}, {{dept.number}}</td>
+            <td><span class="badge badge-light-{{nsvcolor}}">£ {{value}} </span></td>
+            <td>{{callerName}}</td>
+            <td>{{callerNumber}}</td>
+            <td><span class="badge badge-light-{{conFootageColor}}"> {{conFootage}} </span></td>
+            <td><span class="badge badge-light-{{escalledColor}}" text-capitalized=""> {{escalled}}</span> <br />{{cadno}}</td>
+            <td>
+                <div class="btn-group" id="slstatus-{{objectId}}">
+                    <button type="button" class="btn btn-{{slcolor}} btn-sm waves-effect waves-float waves-light">{{slsubmitted}}</button>
+                    <button type="button" class="btn btn-{{slcolor}} btn-sm dropdown-toggle dropdown-toggle-split waves-effect waves-float waves-light" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="#" onclick="incidents.changeslstatus(1, '{{objectId}}');">No</a>
+                        <a class="dropdown-item" href="#" onclick="incidents.changeslstatus(2, '{{objectId}}');">Yes</a>
+                        <a class="dropdown-item" href="#" onclick="incidents.changeslstatus(3, '{{objectId}}');">Approved</a>
+                        <a class="dropdown-item" href="#" onclick="incidents.changeslstatus(4, '{{objectId}}');">Rejected</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {{/incidents}}
+    </script>
+
+    <script id="userListOptions" type="text/template">
+        {{#agents}}
+        <option value="{{objectId}}">{{name}}</option>
+        {{/agents}}
+    </script>
+
+    <script id="deptListOption" type="text/template">
+        {{#dept}}
+        <option value="{{objectId}}">{{name}} {{number}}</option>
+        {{/dept}}
+    </script>
+
+    <script id="menuListItemTemplate" type="text/template">
+        {{#menuItems}}
+        <li class="dropdown nav-item {{#isSelected}}active{{/isSelected}}" id="li-nav-incident" onclick="{{link}}">
+            <a class="nav-link d-flex align-items-center" data-bs-toggle="dropdown">
+                {{{icon}}}
+                <span>{{label}}</span>
+            </a>
+        </li>
+        {{/menuItems}}
+    </script>
+
+    <script id="card-statistics-template" type="text/template">
+        {{#components}}
+        <div class="col-xl-2 col-md-{{size}} col-sm-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="avatar {{color}} p-50 mb-1" onclick="{{link}}">
+                        <div class="avatar-content">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square font-medium-5">{{{icon}}}</svg>
+                        </div>
+                    </div>
+                    <h2 class="fw-bolder" onclick="{{link}}">{{label}}</h2>
+                    <p class="card-text" onclick="{{link}}">{{desc}}</p>
+                </div>
+            </div>
+        </div>
+        {{/components}}
+
+    </script>
+
+    <script id="card-table-template" type="text/template">
+        {{#components}}
+        <div class="col-12">
+            <div class="card" style="padding:15px;">
+                <div class="card-header border-bottom p-1">
+                    <div class="head-label"><h6 class="mb-0">{{title}}</h6></div><div class="dt-action-buttons text-end">
+                        <div class="dt-buttons d-inline-flex">
+                            <button onclick="{{link}}" class="dt-button create-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_{{__id}}" type="button" data-bs-toggle="modal" data-bs-target="#modals-slide-in"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus me-50 font-small-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>Add New Record</span></button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table display data-table text-nowrap" id="tbl-datatable-{{__id}}" __id="{{__id}}">
+                    <thead id="dt-table-header">
+                    </thead>
+                    <tbody id="dt-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{/components}}
+    </script>
+    <!-- Custom Templates -->
+    <script id="grid-header-column" type="text/template">
+        {{#fields}}
+        <th style="max-width:__COLUMNWIDTH__;">{{header}}</th>
+        {{/fields}}
+    </script>
+    <script id="grid-row-column" type="text/template">
+        <td title="{{title}}" style="{{style}}">{{val}}</td>
+    </script>
+
+    <script>
+        $(window).on('load', function () {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+            //loads Menu from the Json
+            if (menuItems.length > 0) {
+                var d = { "menuItems": menuItems };
+                $('#main-menu-navigation').html(Mustache.render($("#menuListItemTemplate").html(), d));
+            } else {
+                $('.horizontal-menu-wrapper').remove();
+                $('.app-content').css({ 'padding-top': '100px' });
+            }
+            console.log($('#form-groupheader-field').html());
+        })
+        user.loaduser();
+        //user.loadAll();
+        //dashboard.loaddashboard();
+
+        var renderView = {
+            render: function (view) {
+                let __v = customViews.find(el => el.name === view);
+                switch (__v.type) {
+                    case "html":
+                        this.renderHTML(__v)
+                        break;
+                    case "form":
+                        this.renderForm(__v)
+                        break;
+                }
+
+            },
+            renderForm: function (__v) {
+                var html = "";
+                mrof.resetmrof();
+                var d = [];
+                mrof.tempId = __recordId;
+                mrof.recordId = __recordId;
+                mrof.aftercomplete = function () {
+                    //core.loadPage('accounts-li', 'accounts/list-all-expenses.html', 'List Expenses', () => { });
+                }
+                __v.__id = getRandomSixDigit();
+                $('#page-content-body').html(Mustache.render($('#form-outer-template').html(), __v));
+                mrof.init(__v.fields, `form-container-${__v.__id}`, d, "Expenses/AddUpdateExpenses");
+                return;
+                if (__recordId != "-1") {
+                    var d = '{ "objId":"' + __recordId + '"}';
+                    common.getApi(getRecordAPI, function (d) {//TODO: Generate API to save the subject information
+                        mrof.init(fields, "form-container", d, "Expenses/AddUpdateExpenses");
+                    });
+                } else {
+                    mrof.init(fields, "page-content-body", d, "Expenses/AddUpdateExpenses");
+                }
+            },
+            renderHTML: function (__v) {
+                var html = "";
+                __v.rows.forEach(function (obj) {
+                    html += '<div class="row">';
+                    obj.components.forEach(function (comp) {
+                        comp.__id = getRandomSixDigit();
+                        var d = { "components": comp };
+                        html += Mustache.render($("#card-" + comp.type + "-template").html(), d)
+                    });
+                    html += '</div>';
+                });
+                $('#page-content-body').html(html);
+                const allComponents = __v.rows.flatMap(row => row.components);//get all tables
+                var alltables = allComponents.filter(el => el.type == "table");
+                if (alltables.length > 0) {
+                    //render all tables
+                    $.each(alltables, function (index, value) {
+                        let __id = $(value)[index].__id;
+                        xobni.reset();
+                        var fields = {
+                            "fields": $(value)[index].fields
+                        };
+                        xobni.columns = fields;
+                        xobni.rowIcons = $(value)[index].rowIcons;
+                        //TODO: Get the data from tables
+                        xobni.data = [{ month: 'January', amount: 154.00, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }, { month: 'February', amount: 267, status: 'Paid' }];
+                        xobni.container = "#tbl-datatable-" + __id;
+                        xobni.init();
+                    });
+                }
+            }
+        }
+        renderView.render('dashboard');
+        //__recordId = "-1";
+        //renderView.render("clientNewRequest");
+
+    </script>
+</body>
+<!-- END: Body-->
+
+</html>

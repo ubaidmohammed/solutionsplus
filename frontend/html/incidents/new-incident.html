@@ -1,0 +1,2031 @@
+<div id="common-form">
+    <div class="row">
+        <div class="col-xl-4 col-md-6 col-12">
+            <div class="mb-1">
+                <label class="form-label" for="basicInput">URN:</label>
+                <h1 class="text-primary" id="urn-label">SOC-NS-160522001</h1>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6 col-12">
+            <div class="mb-1">
+                <label class="form-label" for="ddl-nature-of-call">Nature of Call: </label>
+                <select class="form-select form-select-lg form-control" id="ddl-nature-of-call" onchange="incidents.changecalltype($(this).find(':selected').data('typeoption'),$(this).find(':selected').data('typefor'), true);">
+                    <option data-typeoption="onenumbercall" value="onenumbercall">One Number Call</option>
+                    <!-- <option data-typeoption="theft" value="theft">Theft</option>-->
+                    <option data-typeoption="missingproducts" value="missingproducts">Theft/Missing Products</option>
+                    <option data-typeoption="detained" value="detained">Detained</option>
+                    <option data-typeoption="recovery" value="recovery">Recovery</option>
+                    <option data-typeoption="recovery" data-typefor="standout" value="standout">Stand out</option>
+                    <option data-typeoption="bannedperson" value="bannedperson">Banned person</option>
+                    <option style="font-weight:bold;">Security response required</option>
+                    <option data-typeoption="theftother" value="theftother" style="margin-left:10px;">Theft other</option>
+                    <option data-typeoption="firstaid" value="firstaid" style="margin-left:10px;">First aid</option>
+                    <option data-typeoption="prealarm" value="prealarm" style="margin-left:10px;">Pre alarm</option>
+                    <option data-typeoption="prealarm" data-typefor="firealarm" value="firealarm" style="margin-left:10px;">Fire alarm</option>
+                    <option data-typeoption="customerrelation" value="customerrelation" style="margin-left:10px;">Customer Relation</option>
+                    <option data-typeoption="customerliftentrapment" value="customerliftentrapment" style="margin-left:10px;">Customer Lift Entrapment</option>
+                    <option data-typeoption="missingperson" value="missingperson" style="margin-left:10px;">Missing person</option>
+                    <option data-typeoption="harassment" value="harassment" style="margin-left:10px;">Harassment</option>
+                    <option data-typeoption="harassment" data-typefor="antisocialbehaviour" value="antisocialbehaviour" style="margin-left:10px;">Anti social behaviour</option>
+                    <option data-typeoption="aggressivecustumer" value="aggressivecustumer" style="margin-left:10px;">Aggressive costumer</option>
+                    <option data-typeoption="aggressivecustumer" data-typefor="intoxicatedperson" value="intoxicatedperson" style="margin-left:10px;">Intoxicated Person</option>
+                    <option data-typeoption="carpark" value="carpark" style="margin-left:10px;">Car park</option>
+                    <option data-typeoption="carpark" data-typefor="loadingbay" value="loadingbay" style="margin-left:10px;">Loading bay</option>
+                    <option data-typeoption="carpark" data-typefor="externalactivity" value="externalactivity" style="margin-left:10px;">External activity</option>
+                    <option data-typeoption="carpark" data-typefor="internalactivity" value="internalactivity" style="margin-left:10px;">Internal activity</option>
+                    <option data-typeoption="emergencyservicescallout" value="emergencyservicescallout">Emergency services required or call out</option>
+                    <option data-typeoption="cctvmonitoringrequest" value="cctvmonitoringrequest">CCTV Monitoring request</option>
+                    <option data-typeoption="events" value="events">Events</option>
+                    <option data-typeoption="events" data-typefor="protests" value="protests">Protests</option>
+                    <option data-typeoption="staffincident" value="staffincident">Staff Incident</option>
+                    <option data-typeoption="footagerequest" value="footagerequest">Footage request</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6 col-12">
+            <div class="mb-1">
+                <label class="form-label" for="ddlDepartmentNewIncident">Select Department</label>
+                <select class="select2 form-select form-control" id="ddlDepartmentNewIncident" data-fieldname="Department" onselect="console.log('selected')">
+                </select>
+                <h5 class="text-danger error-labels" id="error-ddlDepartmentNewIncident">You must select a department!</h5>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4 col-md-6 col-12">
+            <h4 class="text-warning" id="deptDetails"></h4>
+        </div>
+        <div class="col-xl-3 col-md-6 col-12">
+            <div class="mb-1">
+                <label class="form-label" for="txt-callername">Reported By:</label>
+                <input type="text" class="form-control text-box" id="txt-callername" data-fieldname="CallerName" />
+                <h5 class="text-danger error-labels" id="error-CallerName">You must enter a valid name</h5>
+                <input type="hidden" class="form-control" id="txt-floor" data-fieldname="Floor" />
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 col-12">
+            <div class="mb-1">
+                <label class="form-label" for="basicInput">Contact Number:</label>
+                <input type="text" class="form-control text-box" id="txt-callernumber" data-fieldname="CallerNumber" />
+                <h5 class="text-danger error-labels" id="error-CallerNumber">You must enter a valid phone Number</h5>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-6 col-12">
+            <div class="mb-1">
+                <label class="form-label" for="basicInput">Extension Number:</label>
+                <input type="text" class="form-control  text-box" id="txt-callerextension" data-fieldname="CallerExtension" maxlength="4" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4 col-md-6 col-12">
+            &nbsp;
+        </div>
+        <div class="col-xl-2 col-md-6 col-12">
+            <div class="form-check form-check-info">
+                <br />
+                <label class="form-check-label" for="colorCheck6">&nbsp;Guard Attended?</label>
+                <input type="checkbox" class="form-check-input form-control" id="colorCheck6" checked="" data-fieldname="GuardAttended"><br />
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-6 col-12">
+            <div class="mb-1">
+                <label class="form-label" for="txt-callername">Guard Title & Name:</label>
+                <input type="text" class="form-control text-box" id="txt-callername" data-fieldname="GuardName" />
+                <h5 class="text-danger error-labels" id="error-CallerName">You must enter a valid name</h5>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-6 col-12">
+            <div class="form-check form-check-info">
+                <br />
+                <label class="form-check-label" for="colorCheck6">&nbsp;Manager/Store Lead Informed?</label>
+                <input type="checkbox" class="form-check-input form-control" id="colorCheck6" checked="" data-fieldname="ManagerInformed"><br />
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-6 col-12">
+            <div class="mb-1">
+                <label class="form-label" for="txt-callername">Manager/Store Lead Name:</label>
+                <input type="text" class="form-control text-box" id="txt-callername" data-fieldname="ManagerName" />
+                <h5 class="text-danger error-labels" id="error-CallerName">You must enter a valid name</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+
+<div class="row subform" id="onenumbercall-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Personal Informed: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfPersonalInformed">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of ES Called: </label>
+            <input type="text" id="time-escalled" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfESCalled">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Location Of Incident: </label>
+            <input type="text" class="form-control  text-box" id="txt-incident-location" data-fieldname="Location" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comment: </label>
+            <input type="text" id="txt-incident-comment" class="form-control text-start active text-box" data-fieldname="TOIComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Personal Informed Comment: </label>
+            <input type="text" id="txt-personal-comment" class="form-control text-start  text-box active" data-fieldname="PersonalInformedComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="ActionTaken">Name of Person Informed: </label>
+            <input type="text" class="form-control" id="txt-manager-name" spellcheck="true" data-fieldname="ManagerName" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Nature of Call: </label>
+            <input type="text" class="form-control" id="txt-incident-location" data-fieldname="IncidentNature" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="TheftNature">Emergency Servics Requested: </label>
+        <select class="form-select form-control" id="TheftNature" data-fieldname="TypeOfIntoxication">
+            <option value="1">
+                Police
+            </option>
+            <option value="0">
+                Ambulance
+            </option>
+            <option value="2">
+                Fire Services
+            </option>
+        </select>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="ActionTaken">Action Taken: </label>
+            <input type="text" class="form-control" id="ActionTaken" spellcheck="true" data-fieldname="ActionTaken" />
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Further Action Required: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="theft-form">
+    <div class="col-xl-6 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Comments: </label>
+            <textarea class="form-control" id="validationBio" name="validationBiojq" rows="5" spellcheck="true" data-fieldname="Comments"></textarea>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+
+        <div class="mb-1">
+            <br />
+            <div class="form-check form-check-info">
+                <label class="form-check-label" for="colorCheck6">&nbsp;NSV?</label><br />
+                <input type="checkbox" class="form-check-input form-control" id="colorCheck6" checked="" data-fieldname="NSV"><br />
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Value: </label>
+            <div class="input-group input-group-merge">
+                <span class="input-group-text">&#163;</span>
+                <input type="number" id="contact-info-icon" class="form-control" name="contact-icon" placeholder="Enter value" value="0.00" data-fieldname="Value">
+            </div>
+        </div>
+
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="footagesaved">
+                    Footage Saved
+                </option>
+                <option value="footagepending">
+                    Footage Pending
+                </option>
+                <option value="footageinconclusive">
+                    Footage Inculcusive
+                </option>
+                <option value="nocameracoverage">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="missingproducts-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Last Seen: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfLastSeen">
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <div class="form-check form-check-info">
+                <br />
+                <label class="form-label" for="disabledInput">&nbsp;Stock Lost: </label>
+                <input type="checkbox" class="form-check-input form-control" id="colorCheck6" checked="" data-fieldname="StockLost">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <div class="form-check form-check-info">
+                <br />
+                <label class="form-check-label" for="colorCheck6">&nbsp;NSV?</label>
+                <input type="checkbox" class="form-check-input form-control" id="colorCheck6" checked="" data-fieldname="NSV">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Value: </label>
+            <div class="input-group input-group-merge">
+                <span class="input-group-text">&#163;</span>
+                <input type="number" id="contact-info-icon" class="form-control" name="contact-icon" placeholder="Enter value" value="0.00" data-fieldname="Value">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Stock Lost Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Awaiting Stock Lost Request
+                </option>
+                <option value="2">
+                    Stock Lost Request Received
+                </option>
+                <option value="3">
+                    Request Accepted
+                </option>
+                <option value="4">
+                    Request Rejected
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="col-xl-6 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="detained-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of Incident Reported: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of Selection: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfSelection">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of Concealment: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfConcealment">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of Leaving the building: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfLOB">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Selection Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOSComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Concealment Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOCComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Leaving Building Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="LOBComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of Detention: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfDetention">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time to holding room: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfHoldingRoom">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of goods recovered: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfRecovery">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <div class="form-check form-check-info">
+                <br />
+                <label class="form-label" for="disabledInput">&nbsp;Confirm Non-payment: </label>
+                <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="ConfirmNonPayment">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Detention Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="DetentionComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Holding Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="HoldingComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Goods Recieved Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="GoodsRecievedComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Route of exit: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="ExitRoute" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-check-label" for="colorCheck6">&nbsp;Police Called:</label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="IsPoliceCalled">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of Call (police): </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfPoliceCall">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="disabledInput">Value: </label>
+        <div class="input-group input-group-merge">
+            <span class="input-group-text">&#163;</span>
+            <input type="number" id="contact-info-icon" class="form-control" name="contact-icon" placeholder="Enter value" value="0.00" data-fieldname="Value">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-label" for="disabledInput">&nbsp;MG11 Statement Provided: </label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="MG11StatementProvided">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Police Called Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="PoliceCalledComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-label" for="disabledInput">&nbsp;Footage provided as evidence: </label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="FootageAsIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="recovery-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of Selection: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfSelection">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time of Concealment: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfConcealment">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="disabledInput">Recovery Value: </label>
+        <div class="input-group input-group-merge">
+            <span class="input-group-text">&#163;</span>
+            <input type="number" id="contact-info-icon" class="form-control" name="contact-icon" placeholder="Enter value" value="0.00" data-fieldname="Value">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Comments (Time of Selection): </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="TOSComments" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Comments (Time of Concealment): </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="TOCComments" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Comments (Time of Observation): </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="TOOComments" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Comments (Time of Recovery & Escort): </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="EscortComments" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-check-label" for="colorCheck6">&nbsp;Time of Observations:</label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="ToO">
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-check-label" for="colorCheck6">&nbsp;Is Suspect Known:</label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="IsSuspectKnown">
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-check-label" for="colorCheck6">&nbsp;Is Suspect Banned:</label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="IsSuspectBanned">
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-check-label" for="colorCheck6">&nbsp;Is Suspect Escorted Out:</label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="IsSuspectEscorted">
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-check-label" for="colorCheck6">&nbsp;NSV?</label>
+            <input type="checkbox" class="form-check-input form-control" id="colorCheck6" checked="" data-fieldname="NSV">
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="bannedperson-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Name of Suspect: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="NameOfSuspect" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <div class="form-check form-check-info">
+                <br />
+                <label class="form-label" for="disabledInput">Confirm Verbal Banned: </label>
+                <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="ConfirmVerbalBanned" />
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <div class="form-check form-check-info">
+                <br />
+                <label class="form-label" for="disabledInput">Confirm Written Banned: </label>
+                <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="ConfirmWrittenBanned" />
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Verbal Ban Date: </label>
+            <input type="text" id="fp-default" class="form-control flatpickr-basic flatpickr-input active" placeholder="DD-MM-YYYY" readonly="readonly" data-fieldname="DateOfVerbalBanned">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Previous Ban Notice Date: </label>
+            <input type="text" id="fp-default" class="form-control flatpickr-basic flatpickr-input active" placeholder="DD-MM-YYYY" readonly="readonly" data-fieldname="PreviousBanNoticeDate">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Date of Banning: </label>
+            <input type="text" id="fp-default" class="form-control flatpickr-basic flatpickr-input active" placeholder="DD-MM-YYYY" readonly="readonly" data-fieldname="DateOfBanning">
+
+        </div>
+    </div>
+    <div class="col-xl-6 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Method of Escort: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="MethodOfEscort" />
+        </div>
+    </div>
+    <div class="col-xl-6 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="firstaid-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Person Recieving The Aid: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonVictim" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Person Administrating The Aid: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="txt-refnumber">Reference Number: </label>
+            <input type="text" class="form-control" id="txt-refnumber" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-12 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Comments: </label>
+            <textarea class="form-control" id="validationBio" name="validationBiojq" rows="5" spellcheck="true" data-fieldname="Comments"></textarea>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="theftother-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="TimeOfSelection">Time of Selection: </label>
+            <input type="text" id="TimeOfSelection" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfSelection">
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="TimeOfConcealment">Time of Concealment: </label>
+            <input type="text" id="TimeOfConcealment" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfConcealment">
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="IncidentNature">Nature of Theft: </label>
+        <input type="text" class="form-control" id="IncidentNature" data-fieldname="IncidentNature" />
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="TOSComments">Comments About TOI: </label>
+            <input type="text" class="form-control" id="TOSComments" data-fieldname="TOIComments" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="TOSComments">Comments About TOS: </label>
+            <input type="text" class="form-control" id="TOSComments" data-fieldname="TOSComments" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="TOSComments">Comments About TOC: </label>
+            <input type="text" class="form-control" id="TOSComments" data-fieldname="TOCComments" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Officer Attending Theft: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Theft Location: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="Location" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Description of Suspect: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="SuspectDescription" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="CADRefNumber">Ref Number: </label>
+            <input type="text" class="form-control" id="CADRefNumber" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="prealarm-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="TimeCleared">Time Cleared: </label>
+            <input type="text" id="TimeCleared" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeCleared">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="CallPointNumber">Call Point Number: </label>
+            <input type="text" class="form-control" id="CallPointNumber" data-fieldname="CallPointNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Location of Alarm: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="Location" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time Cleared Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TimeClearedComments">
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="PersonAdministor">Officer Attending: </label>
+            <input type="text" class="form-control" id="PersonAdministor" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="PropertyServiceAttendant">Property Service Attendants: </label>
+            <input type="text" class="form-control" id="PropertyServiceAttendant" data-fieldname="PropertyServiceAttendant" />
+        </div>
+    </div>
+
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="Comments">Reason of Alarm: </label>
+            <input type="text" class="form-control" id="Comments" data-fieldname="Comments" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form firealarm">
+        <div class="mb-1">
+            <label class="form-label" for="LocationEvacuated">Location Evacuated: </label>
+            <input type="text" class="form-control" id="LocationEvacuated" data-fieldname="LocationEvacuated" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form firealarm">
+        <div class="mb-1">
+            <label class="form-label" for="CADRefNumber">Ref Number: </label>
+            <input type="text" class="form-control" id="CADRefNumber" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form firealarm">
+        <div class="mb-1">
+            <label class="form-label" for="CADNumber">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="CADNumber" data-fieldname="CADNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form firealarm">
+        <div class="mb-1">
+            <label class="form-label" for="ESRComment">ESR Comment: </label>
+            <input type="text" class="form-control" id="ESRComment" data-fieldname="ESRComment" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form firealarm">
+        <div class="mb-1">
+            <br />
+            <div class="form-check form-check-info">
+                <label class="form-check-label" for="EmergencyServicesRequired">&nbsp;Emergency Services Required?</label><br />
+                <input type="checkbox" class="form-check-input form-control" id="EmergencyServicesRequired" checked="" data-fieldname="EmergencyServicesRequired"><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="customerrelation-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Nature of Customer Complain: </label>
+            <input class="form-control" id="validationBio" name="validationBiojq" rows="5" spellcheck="true" data-fieldname="Comments" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Customer Escort: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="EscortComments" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Personal Attending: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="TheftNature">Emergency Servics Requested: </label>
+        <select class="form-select form-control" id="TheftNature" data-fieldname="TypeOfIntoxication">
+            <option value="1">
+                Police
+            </option>
+            <option value="0">
+                Ambulance
+            </option>
+            <option value="2">
+                Fire Services
+            </option>
+        </select>
+    </div>
+
+    <div class="col-xl-6 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+
+</div>
+
+<div class="row subform" id="customerliftentrapment-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="TimeCleared">Time Cleared: </label>
+            <input type="text" id="TimeCleared" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeCleared">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="PersonAdministor">Personal Attending: </label>
+            <input type="text" class="form-control" id="PersonAdministor" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="PropertyServiceAttendant">Property Service Attendants: </label>
+            <input type="text" class="form-control" id="PropertyServiceAttendant" data-fieldname="PropertyServiceAttendant" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comment: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Time Cleared Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TimeClearedComments">
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="CADRefNumber">Reference Number: </label>
+            <input type="text" class="form-control" id="CADRefNumber" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Further Action Required: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="missingperson-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Last Seen: </label>
+            <input type="text" id="fp-time" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfLastSeen">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Description of Person: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="SuspectDescription" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Last Seen Location: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="Location" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Last Seent Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="LastSeenComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Officer Attending: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+    <div class="col-xl-6 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Additional Comments: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="Comments" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="harassment-form">
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Officer Attending: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="IncidentNature">Nature of Incident: </label>
+        <input type="text" class="form-control" id="IncidentNature" data-fieldname="IncidentNature" />
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Victim Name: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonVictim" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Description of Suspect: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="SuspectDescription" />
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Location of Incident: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="Location" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form firealarm">
+        <div class="mb-1">
+            <br />
+            <div class="form-check form-check-info">
+                <label class="form-check-label" for="EmergencyServicesRequired">&nbsp;Reported to Emergency Services?</label><br />
+                <input type="checkbox" class="form-check-input form-control" id="EmergencyServicesRequired" checked="" data-fieldname="EmergencyServicesRequired"><br />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Further Action Required: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="form-check form-check-info">
+            <label class="form-check-label" for="BanningNoticeIssued">&nbsp;Banning Notice Issued:</label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="BanningNoticeIssued">
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="aggressivecustumer-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Officer Attending: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6 second-form aggressivecustumer">
+        <label class="form-label" for="IncidentNature">Nature of Aggression: </label>
+        <input type="text" class="form-control" id="IncidentNature" data-fieldname="IncidentNature" />
+    </div>
+    <div class="col-xl-6 col-md-4 col-6 second-form intoxicatedperson">
+        <label class="form-label" for="TheftNature">Type of Intoxication: </label>
+        <select class="form-select form-control" id="TypeOfIntoxication" data-fieldname="TypeOfIntoxication">
+            <option value="1">
+                Alcohol
+            </option>
+            <option value="0">
+                Influence of Drugs
+            </option>
+            <option value="2">
+                Medication
+            </option>
+        </select>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6  second-form aggressivecustumer">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Level Of Aggression: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="Comments" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form aggressivecustumer">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Victim Name: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonVictim" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Description of Suspect: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="SuspectDescription" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form aggressivecustumer">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Location of Incident: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="Location" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <div class="form-check form-check-info">
+                <br />
+                <label class="form-check-label" for="EmergencyServicesRequired">&nbsp;Reported to Emergency Services?</label>
+                <input type="checkbox" class="form-check-input form-control" id="EmergencyServicesRequired" checked="" data-fieldname="EmergencyServicesRequired"><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="form-check form-check-info">
+            <br />
+            <label class="form-check-label" for="BanningNoticeIssued">&nbsp;Banning Notice Issued:</label>
+            <input type="checkbox" class="form-check-input form-control" checked="" data-fieldname="BanningNoticeIssued">
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Further Action Required: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="carpark-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Officer Attending: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="ReportedOtherServices">Reported to Other Services: </label><br />
+            <input type="checkbox" class="form-check-input form-control" id="ReportedOtherServices" checked="" data-fieldname="ReportedOtherServices">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <br />
+            <div class="form-check form-check-info">
+                <label class="form-check-label" for="EmergencyServicesRequired">&nbsp;Reported to Emergency Services?</label><br />
+                <input type="checkbox" class="form-check-input form-control" id="EmergencyServicesRequired" checked="" data-fieldname="EmergencyServicesRequired"><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Further Action Required: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Date of Banning: </label>
+            <input type="text" id="fp-default" class="form-control flatpickr-basic flatpickr-input active" placeholder="DD-MM-YYYY" readonly="readonly" data-fieldname="DateOfBanning">
+
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+
+</div>
+
+<div class="row subform" id="events-form">
+    <div class="col-xl-3 col-md-4 col-6  second-form events">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Event: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form protests">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Protest: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form events">
+        <label class="form-label" for="TheftNature">Nature of Event: </label>
+        <select class="form-select form-control" id="NatureOfIncidents" data-fieldname="IncidentNature">
+            <option value="Store Event">
+                Store Event
+            </option>
+            <option value="Shop Floor Event">
+                Shop Floor Event
+            </option>
+            <option value="VIP Event ">
+                VIP Event
+            </option>
+            <option value="Hotel Event ">
+                Hotel Event
+            </option>
+            <option value="Other Selfridegs Event">
+                Other Selfridegs Event
+            </option>
+        </select>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form protests">
+        <label class="form-label" for="TheftNature">Nature of Protest: </label>
+        <input type="text" class="form-control" id="NatureOfProtest" data-fieldname="IncidentNature" />
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="OrganiserDetails">Organiser Details: </label>
+            <input type="text" class="form-control" id="OrganiserDetails" data-fieldname="OrganiserDetails" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Action Required from SOC: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comment: </label>
+            <input type="text" id="txt-comments-incident" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="emergencyservicescallout-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Event/Incident: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="TimeCleared">Time Emergency Services Responded: </label>
+            <input type="text" id="TimeCleared" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeCleared">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="TheftNature">Type of Emergency Servics Requested: </label>
+        <select class="form-select form-control" id="TheftNature" data-fieldname="TypeOfIntoxication">
+            <option value="1">
+                Police
+            </option>
+            <option value="0">
+                Ambulance
+            </option>
+            <option value="2">
+                Fire Services
+            </option>
+        </select>
+    </div>
+
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Personal Details: </label>
+            <textarea class="form-control" id="validationBio" name="validationBiojq" rows="1" spellcheck="true" data-fieldname="Comments"></textarea>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident/Event Comments: </label>
+            <input type="text" id="txt-comments-incident" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="ReasonComment">Comments for Emergency Service Response: </label>
+            <input type="text" id="txt-comments-ESR" class="form-control text-start active" spellcheck="true" data-fieldname="TESRespondedComments">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="ReasonComment">Reason for Calling Emergency Services: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" spellcheck="true" data-fieldname="ReasonComment">
+        </div>
+    </div>
+
+
+
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="ActionTaken">Action Taken: </label>
+            <input type="text" class="form-control" id="ActionTaken" spellcheck="true" data-fieldname="ActionTaken" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Action Required from SOC: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="cctvmonitoringrequest-form">
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="ReasonComment">Nature of Monitoring: </label>
+            <textarea class="form-control" id="ReasonComment" name="validationBiojq" rows="3" spellcheck="true" data-fieldname="ReasonComment"></textarea>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="time-TimeFrom">Time From: </label>
+            <input type="text" id="time-TimeFrom" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeFrom">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="time-TimeTo">Time To: </label>
+            <input type="text" id="time-TimeTo" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeTo">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Additional Comments </label>
+            <textarea class="form-control" id="validationBio" name="validationBiojq" rows="3" spellcheck="true" data-fieldname="Comments"></textarea>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Approved By: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="staffincident-form">
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="time-incident">Time of Incident Reported: </label>
+            <input type="text" id="time-incident" class="form-control flatpickr-time text-start flatpickr-input active" value="12:00" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeOfIncident">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <label class="form-label" for="TheftNature">Nature of Incident: </label>
+        <input type="text" class="form-control" id="NatureOfIncidents" data-fieldname="IncidentNature" />
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="ActionTaken">Action Taken: </label>
+            <input type="text" class="form-control" id="ActionTaken" spellcheck="true" data-fieldname="ActionTaken" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Further Action Required: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Incident Comments: </label>
+            <input type="text" id="fp-time" class="form-control text-start active" data-fieldname="TOIComments">
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6 second-form firealarm">
+        <div class="mb-1">
+            <br />
+            <div class="form-check form-check-info">
+                <label class="form-check-label" for="EmergencyServicesRequired">&nbsp;Emergency Services Required?</label><br />
+                <input type="checkbox" class="form-check-input form-control" id="EmergencyServicesRequired" checked="" data-fieldname="EmergencyServicesRequired"><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <br />
+            <div class="form-check form-check-info">
+                <label class="form-check-label" for="EmergencyServicesRequired">&nbsp;Reported to Emergency Services?</label><br />
+                <input type="checkbox" class="form-check-input form-control" id="EmergencyServicesRequired" checked="" data-fieldname="EmergencyServicesRequired"><br />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADNumber" />
+        </div>
+    </div>
+    <hr />
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="StaffName1">Staff Name 1: </label>
+            <input type="text" class="form-control" id="StaffName1" data-fieldname="StaffName1" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="StaffName2">Staff Name 2: </label>
+            <input type="text" class="form-control" id="StaffName2" data-fieldname="StaffName2" />
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="StaffName3">Staff Name 3: </label>
+            <input type="text" class="form-control" id="StaffName3" data-fieldname="StaffName3" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="StaffName4">Staff Name 4: </label>
+            <input type="text" class="form-control" id="StaffName4" data-fieldname="StaffName4" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="StaffName5">Staff Name 5: </label>
+            <input type="text" class="form-control" id="StaffName5" data-fieldname="StaffName5" />
+        </div>
+    </div>
+    <hr />
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Comments: </label>
+            <textarea class="form-control" id="validationBio" name="validationBiojq" rows="2" spellcheck="true" data-fieldname="Comments"></textarea>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Approved By: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="PersonAdministor" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row subform" id="footagerequest-form">
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="ReasonComment">Nature of Monitoring: </label>
+            <textarea class="form-control" id="ReasonComment" name="validationBiojq" rows="1" spellcheck="true" data-fieldname="ReasonComment"></textarea>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="fp-RequestDate">Date of Footage Request: </label>
+            <input type="text" id="fp-RequestDate" class="form-control flatpickr-basic flatpickr-input active" placeholder="DD-MM-YYYY" readonly="readonly" data-fieldname="RequestDate">
+
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="time-TimeFrom">Time From: </label>
+            <input type="text" id="time-TimeFrom" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeFrom">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="time-TimeTo">Time To: </label>
+            <input type="text" id="time-TimeTo" class="form-control flatpickr-time text-start flatpickr-input active" placeholder="HH:MM" readonly="readonly" data-fieldname="TimeTo">
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6 second-form firealarm">
+        <div class="mb-1">
+            <br />
+            <div class="form-check form-check-info">
+                <label class="form-check-label" for="footagesaved">&nbsp;Footage Saved?</label><br />
+                <input type="checkbox" class="form-check-input form-control" id="footagesaved" checked="" data-fieldname="footagesaved"><br />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="FurtherActionRequired">Further Action Required: </label>
+            <input type="text" class="form-control" id="FurtherActionRequired" spellcheck="true" data-fieldname="FurtherActionRequired" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 col-12">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Additional Comments: </label>
+            <input type="text" class="form-control" id="Comments" spellcheck="true" data-fieldname="Comments" />
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">CAD Ref Number: </label>
+            <input type="text" class="form-control" id="basicInput" data-fieldname="CADRefNumber" />
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-4 col-6">
+        <div class="mb-1">
+            <label class="form-label" for="disabledInput">Footage Status: </label>
+            <select class="form-select form-control" id="basicSelect" data-fieldname="ConfirmFootage">
+                <option value="1">
+                    Footage Saved
+                </option>
+                <option value="2">
+                    Footage Pending
+                </option>
+                <option value="3">
+                    Footage Inculcusive
+                </option>
+                <option value="4">
+                    No Camera Coverage
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+<script>
+    if (incidents.recordId != null)
+        incidents.loadIncidentDetails();
+</script>

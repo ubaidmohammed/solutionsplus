@@ -1,0 +1,243 @@
+	Reported By:
+	Contact Number:
+	Department Number:
+	Department Name: Both should be searchable.
+Theft:
+
+	Checkbox for NSV is needed.
+	Add checkbox: 
+		Confirm Footage & Saved
+		No footage saved, footage inconclusive
+	Rename details to Comments:
+	
+Detained:
+
+	Time of selection
+	Time of concealment
+	Time of observation
+	Confirm method of non-payment (yes/no) - checkbox
+	Time of leaving the building
+	Route of exit
+	Time of detaintion
+	Time brought back to the holding room.
+	Time of goods produced.
+	Value of goods
+	Police called? (yes/no) checkbox
+	Time of call (police)
+	CAD Ref Number
+	MG-11 statement provided (Yes/No)
+	Footage provided as evidence (yes/no)
+	
+Recovery & Stand out:
+
+	Time of selection - checkbox (yes/no)
+		Comments for time of selection
+	Time of concealment checkbox (yes/no)
+		Comments for time of concealment
+	Time of observation - checkbox (yes/no)
+		Comments for time of observation
+	Is Suspect known or unknown
+	Is suspect banned? (yes/no)
+	Recovery method comments
+	Recovery Value (if any)
+	Suspect escorted out of building (yes/no)
+		Comments
+	Footage saved (yes/no)
+	Footage Inconclusive (yes/no)
+
+Banned Person
+
+	Name of suspect
+	Offence of suspect - drop down list. (Naveed bhai will give this list)
+		Comments
+	Confirm verbal banned
+	Confirm Written banned
+	Date of banning
+	Method of escort
+	Footage saved (yes/no)
+	Footage Inconclusive (yes/no)
+
+Security Response Required
+	Type of Response - Drop down
+		First Aid
+			Time of first aid
+			Person reciving the aid
+			Person administring first aid
+			Comments		
+		Theft Other
+			Time of theft
+			Officeer attending theft - Name of the guard - text box
+			Nature of theft - comments
+			Location of theft - Comments
+			Footage Reviwed (Yes/No)
+			Footage confirmed
+			Description of suspect
+			Time of selection - checkbox (yes/no)
+				Comments for time of selection
+			Time of concealment checkbox (yes/no)
+				Comments for time of concealment
+			Time of observation - checkbox (yes/no)
+				Comments for time of observation
+		Pre Alarm
+			Time of Pre-alarm
+			Call point number - drop down list of places
+			location of pre-alarm - comments
+			Officer attending - Name of the guard
+			Property Service Attendants - Name of person
+			Time cleared - Time selection
+			Reason of pre-alarm - comments
+		Fire Alarm
+			Time of fire-alarm
+			Call point number - drop down list of places
+			location of fire-alarm - comments
+			Officer attending - Name of the guard
+			Property Service Attendants - Name of person
+			Time cleared - Time selection
+			Reason of fire-alarm - comments
+			Location Evacuated - Comments
+			Emergency Services Requires - Yes/No (checkbox)
+				Comments
+		Costumer Relation
+			Customer complain - Comments
+			Customer escort - comments
+			Personal attending - name of the person
+		Customer lift entrapment	
+			Time of incident - Time selection		
+			Person Attending - Name of the person
+			Property services attending - Name of the person
+			Time cleared - Time selection
+			Further action required - Comments
+		Missing Person
+			Time of reporting - Time selection
+			Description of missing person - comment
+			Last seen - Time selection
+			Last seen location - comment
+			Additional Infomration - Comment
+			Person Attending
+		Harassement
+			Personal attending - name of the guard
+			Time of harassement - time selection
+			Nature of harassement - drop down (Naveed bhai will share)
+			Name of victim - comment
+			Description of suspect - comment
+			Location of incident - comment
+			Reported to emergency service - yes/no checkbox
+			CAD ref number
+			Further actions required - comment	
+			Banning notice issued? Yes/No - checkbox
+		Anti Social Behaviour
+			Personal attending - name of the guard
+			Time of incident - time selection
+			Nature of incident - drop down (Naveed bhai will share)
+			Name of victim - comment
+			Description of suspect - comment
+			Location of incident - comment
+			Reported to emergency service - yes/no checkbox
+			CAD ref number
+			Further actions required - comment	
+			Banning notice issued? Yes/No - checkbox			
+		Aggresive Customer
+			Personal attending - name of the guard
+			Time of incident - time selection
+			Nature of aggression - drop down (Naveed bhai will share)
+			Name of victim - comment
+			Level of aggression - comment
+			Location of incident - comment
+			Reported to emergency service - yes/no checkbox
+			CAD ref number
+			Further actions required - comment	
+			Banning notice issued? Yes/No - checkbox	
+		Intoxicated Customer			
+			Personal attending - name of the guard
+			Time of incident - time selection
+			Description of the person - Comment
+			Type of intoxication - comment
+			Reported to emergency service - yes/no checkbox
+			CAD ref number
+			Further actions required - comment	
+			Banning notice issued? Yes/No - checkbox
+		Car Park			
+			Personal attending - name of the guard
+			Time of incident - time selection
+			Description of incident - Comment	
+			Reported other services - comment
+			Reported to emergency service - yes/no checkbox
+			CAD ref number
+			Further actions required - comment	
+			Banning notice issued? Yes/No - checkbox			
+		Loading Bay			
+			Personal attending - name of the guard
+			Time of incident - time selection
+			Description of incident - Comment	
+			Reported other services - comment
+			Reported to emergency service - yes/no checkbox
+			CAD ref number
+			Further actions required - comment	
+			Banning notice issued? Yes/No - checkbox			
+		External Activity
+			Personal attending - name of the guard
+			Time of incident - time selection
+			Description of incident - Comment	
+			Reported other services - comment
+			Reported to emergency service - yes/no checkbox
+			CAD ref number
+			Further actions required - comment	
+			Banning notice issued? Yes/No - checkbox	
+		Internal Activity
+			Personal attending - name of the guard
+			Time of incident - time selection
+			Description of incident - Comment	
+			Reported other services - comment
+			Reported to emergency service - yes/no checkbox
+			CAD ref number
+			Further actions required - comment	
+			Banning notice issued? Yes/No - checkbox	
+	Footage saved (yes/no)
+	Footage Inconclusive (yes/no)
+emergency requied or call out
+	Time of emergency services called - Time selection
+	Which emergency servics - Drop down (Soc will provide)
+	Detils of personal calling ES - Comment
+	Reason for call ES - Comment
+	Time ES attended - Time selection
+	Action taken - comment
+	Further Action Required - Comment
+Events & Protest:
+	Time of event - time selection
+	Nature of event - comment
+	CCTV monitoring required (yes/no) checkbox
+	Contact details of organiser - comment
+	Action required from security - commen
+CCTV Monitoring Requested
+	Nature of monitoring - comments
+	Time from - time selection
+	Time To - Time selection
+	additional comments
+	Approved by - Name of the person
+Staff Incident
+	Nature of incident - comments
+	Name of the staff - comments X 5 
+	Time of incident - time selection
+	Action GTaken - comment
+	Further Action required - comment
+	Emergency service required - Yes/No
+	Emergency services contact - yes/no
+	CAD Ref number
+	Outcome of the staffmember - comments
+	Approved by - name of the person
+Footage Request
+	Nature of request - comments
+	Date of footage request - date selection
+	Time to - time selection
+	time from - time selection
+	footage saved - comment
+	Any further action required - comment
+	Additional comments - Comments
+	
+Faults
+	Fault type - drop down (Soc will provide)
+	Services called - Comment
+	Assigned to - drop down (Soc will provide)
+	Any further action required - comment
+	Additional comments - Comments
+	
