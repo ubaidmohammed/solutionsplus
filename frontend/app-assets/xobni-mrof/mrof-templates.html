@@ -1,0 +1,178 @@
+﻿<script id="form-fileupload-field1" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group">
+        <label class="form-label">{{label}} {{#isrequired}}*{{/isrequired}}</label>
+        <input type="file" class="form-control-file" data-fieldname="{{field}}" data-isrequired="{{isrequired}}" id="file-{{field}}" data-isAdditional="{{isAdditional}}" data-dataPathField="{{dataPathField}}" data-path="{{datapath}}" data-filetype="{{filetype}}">
+        <span class="alert1 alert-danger" id="error-{{field}}" role="alert" style="display:none">
+            {{error}}
+        </span>
+    </div>
+</script>
+
+<script id="form-fileupload-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group">
+        <div class="card mb-3">
+            <div class="card-body file-upload-tile file-upload-div" id="file-{{field}}" data-isAdditional="{{isAdditional}}" data-filetype="{{filetype}}" style="background-image: url('/cache/dummy.jpg'); background-size: contain; background-repeat: no-repeat; background-position: center;" onmouseover="mrof.showuploadcontrols(this, true);" onmouseout="mrof.showuploadcontrols(this, false);">
+                <div style="display:none;padding:10px;background-color:rgba(255,255,255,0.5);border:dashed 1px black;border-radius:25px;" class="file-upload-controls">
+                    <h4 class="card-title">
+                        Profile picture
+                    </h4>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                    <button type="button" onclick="mrof.filetag = '{{filetype}}'; mrof.fileControlId = '#file-{{field}}'" class="modal-trigger btn-fill-lmd radius-30 text-light bg-dodger-blue" data-toggle="modal" data-target="#large-modal">
+                        Upload
+                    </button>
+                </div>
+                <div class="file-upload" id="file-upload-id-{{field}}" data-fileid="" data-fieldname="{{field}}" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="form-text-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group">
+        <label class="form-label">{{label}} {{#isrequired}}*{{/isrequired}}</label>
+        <input type="{{inputtype}}" data-stringify="{{stringify}}" placeholder="{{placeholdertext}}" class="form-control" data-fieldname="{{field}}" data-isAdditional="{{isAdditional}}" data-dataPathField="{{dataPathField}}" data-isreqerror="{{error}}" data-regexmsg="{{regexmsg}}" data-regex="{{regex}}" data-datapath="{{datapath}}" data-format="{{format}}" data-stringify="{{stringify}}" data-isrequired="{{isrequired}}" id="text-{{field}}" max="{{maxlength}}">
+        <span class="alert1 alert-danger" id="error-{{field}}" role="alert" style="display:none">
+
+        </span>
+    </div>
+</script>
+
+<script id="form-checkbox-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group" style="padding-top:50px;">
+        <input style="margin-top:7px;margin-left:10px;" type="checkbox" data-stringify="{{stringify}}" placeholder="{{placeholdertext}}" class="form-check-input" data-fieldname="{{field}}" data-isAdditional="{{isAdditional}}" data-dataPathField="{{dataPathField}}" data-datapath="{{datapath}}" data-format="{{format}}" data-isrequired="{{isrequired}}" id="chekbox-{{field}}" />
+        <label style="position:relative; left:30px;">{{label}} {{#isrequired}}*{{/isrequired}}</label>
+        <span class="alert1 alert-danger" id="error-{{field}}" role="alert" style="display:none">
+            {{error}}
+        </span>
+    </div>
+</script>
+
+<script id="form-multi-records-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group">
+        <div style="border: 1px dashed #a1a1a1; padding: 10px 10px; width: 100%; border-radius: 5px;">
+            <div class="row">
+                <div style="position: relative; top: -26px; left: 20px; background: white; float: left;">
+                    <h4>{{title}}</h4>
+                </div>
+                <div style="float:right;margin-right:10px">
+                    +
+                </div>
+            </div>
+            <div id="multi-record-container-{{field}}">
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="docgallery-template" type="text/template">
+    {{#docs}}
+    <tr style='width: 20%; float: left; border: 0px; padding: 10px;'>
+        <td colspan="2">
+            <div class="card" style="width: 18rem;cursor:pointer;" onclick="window.open(`${installs.webUrl}/{{urlPath}}`)" title="{{name}}">
+                <div class="item-img" id="record-profilepicture" style="border-radius: 10px; width: 100px; height: 100px; background-size: cover; background-image: url('{{fileThumbUrl}}'), url('img/profile-dummy.png'); ">
+                </div>
+                <div>
+                    <h5 class="card-title" style="white-space: nowrap; overflow: hidden;text-overflow:ellipsis;">{{name}}</h5>
+                    <h5 class="card-title">{{fileType}}</h5>
+                </div>
+            </div>
+        </td>
+    </tr>
+    {{/docs}}
+</script>
+
+<script id="form-textarea-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group">
+        <label class="form-label">{{label}} {{#isrequired}}*{{/isrequired}}</label>
+        <textarea class="textarea form-control" name="message" cols="10" rows="9" data-fieldname="{{field}}" data-isAdditional="{{isAdditional}}" data-stringify="{{stringify}}" data-isreqerror="{{error}}" data-regexmsg="{{regexmsg}}" data-regex="{{regex}}" data-dataPathField="{{dataPathField}}" data-datapath="{{datapath}}" data-isrequired="{{isrequired}}" id="textarea-{{field}}"></textarea>
+        <span class="alert1 alert-danger" id="error-{{field}}" role="alert" style="display:none">
+            {{error}}
+        </span>
+    </div>
+
+</script>
+
+<script id="form-date-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group">
+        <label class="form-label">{{label}} {{#isrequired}}*{{/isrequired}}</label>
+        <input type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker" data-isAdditional="{{isAdditional}}" data-datapath="{{datapath}}" data-dataPathField="{{dataPathField}}" data-fieldname="{{field}}" data-isrequired="{{isrequired}}" id="date-{{field}}">
+        <i class="far fa-calendar-alt"></i>
+        <span class="alert1 alert-danger" id="error-{{field}}" role="alert" style="display:none">
+            {{error}}
+        </span>
+    </div>
+</script>
+
+<script id="form-ddl-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group" data-fieldname="{{field}}">
+        <label class="form-label">{{label}} {{#isrequired}}*{{/isrequired}}</label>
+        <select class="select2" data-fieldname="{{field}}" id="ddl-{{field}}" data-isAdditional="{{isAdditional}}" data-datapath="{{datapath}}" data-dataPathField="{{dataPathField}}" data-isrequired="{{isrequired}}">
+            {{#options}}
+            <option value="{{val}}">{{label}}</option>
+            {{/options}}
+        </select>
+        <span class="alert1 alert-danger" id="error-{{field}}" role="alert" style="display:none">
+            {{error}}
+        </span>
+    </div>
+</script>
+
+<script id="form-multiselect-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group">
+        <label class="form-label">{{label}} {{#isrequired}}*{{/isrequired}}</label>
+        <div data-fieldname="{{field}}" id="multiselect-{{field}}" class="form-multiselect row" data-isAdditional="{{isAdditional}}" data-dataPathField="{{dataPathField}}" data-datapath="{{datapath}}" data-isrequired="{{isrequired}}">
+            {{#options}}
+            <div class="multiselectitem col-xl-3 col-lg-6 col-12 " data-val="{{val}}" data-isselected="false" onclick="mrof.selectItem(this)">{{label}} </div>
+            {{/options}}
+        </div>
+        <span class="alert1 alert-danger" id="error-{{field}}" role="alert" style="display:none">
+            {{error}}
+        </span>
+    </div>
+</script>
+
+<script id="form-multipleset-field" type="text/template">
+    <div class="col-xl-{{size}} col-lg-6 col-12 form-group check-box-group-{{field}} multiset-form-fields" data-fieldname="{{field}}">
+        <label class="form-label">{{label}} {{#isrequired}}*{{/isrequired}}</label>
+        <div class="form-group" data-fieldname="{{field}}" id="multiselect-{{field}}" class="form-multiselect row" data-isAdditional="{{isAdditional}}" data-dataPathField="{{dataPathField}}" data-datapath="{{datapath}}" data-isrequired="{{isrequired}}">
+            {{#fieldset}}
+            <div style="width:100%;">
+                <label class="form-label">{{fieldsetlabel}}</label>
+                {{#options}}<input type="checkbox" name="{{name}}" data-val="{{val}}" onchange="mrof.uncheckOther(this, '{{name}}','{{field}}');" />{{optionlabel}}&nbsp;
+                {{/options}}
+                <hr />
+            </div>
+            {{/fieldset}}
+        </div>
+    </div>
+</script>
+
+<script id="form-groupheader-field" type="text/template">
+    <div style="display: flex; width: 100%; align-items: center;padding-top:20px;">
+        <div style="width:20pt;">
+            <hr />
+        </div>
+        <div style="flex: 0 0 auto;padding-right: 10px; padding-left: 10px;"><h5>{{headertext}}</h5></div>
+        <div style="flex: 1;">
+            <hr />
+        </div>
+    </div>
+</script>
+
+<script id="form-outer-template" type="text/template">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title fw-bolder">{{title}}</h4>
+            </div>
+            <div class="card-body" id="form-container-{{__id}}">
+
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary waves-effect waves-float waves-light" type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</script>

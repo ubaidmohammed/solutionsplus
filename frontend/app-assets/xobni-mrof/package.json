@@ -1,0 +1,30 @@
+{
+  "name": "xobni-mrof",
+  "version": "1.0.0",
+  "description": "Xobni-mrof is a jquery based grid(data table) and form rendering tool, using this tool you can populate your grids and convert them into databases and also you render the forms based on your json settings.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mohdubaid@bitbucket.org/reflections-infomedia/xobni-mrof.git"
+  },
+  "keywords": [
+    "Grid",
+    "Datatable",
+    "Forms",
+    "form",
+    "validation",
+    "API",
+    "data",
+    "View",
+    "Control"
+  ],
+  "author": "Mohammed Ubaid (mohd.ubaid@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/reflections-infomedia/xobni-mrof/issues"
+  },
+  "homepage": "https://bitbucket.org/reflections-infomedia/xobni-mrof#readme"
+}

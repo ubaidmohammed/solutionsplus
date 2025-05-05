@@ -52,4 +52,5 @@ publish/**
 frontend/demo/**
 backend/Reflections.Soc.Services/obj/**
 backend/Reflections.Soc.Services/bin/**
+.vs/**
 
