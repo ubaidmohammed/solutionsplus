@@ -540,7 +540,7 @@ var mrof = {
     },
     __loadTemplates: function () {
         $('body').append('<div id="__mfroTemplateContainer" style="display:none;"></div>');
-        $('#__mfroTemplateContainer').load('../node_modules/xobni-mrof/mrof-templates.html');
+        $('#__mfroTemplateContainer').load('../xobni-mrof/mrof-templates.html');
     }
 }
 mrof.__loadTemplates();
