@@ -130,7 +130,7 @@ var customViews = [
                 "type": "fileupload",
                 "filetype": "profilepicture",
                 "label": "Upload Photo",
-                "size": 6
+                "size": 3
             },
         ]
     }

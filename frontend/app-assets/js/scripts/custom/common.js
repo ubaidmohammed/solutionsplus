@@ -10,6 +10,49 @@ var common = {
             }
         })
     },
+    renderDate: function (modalId) {
+        const commonOptions = {
+            language: {
+                days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                today: 'Today',
+                clear: 'Clear',
+                firstDay: 0
+            },
+            onSelect: function (fd, d, calendar) {
+                calendar.hide();
+            },
+            onShow: function (currEvent) {
+                $(currEvent.el).addClass('activeDatePicker');
+            },
+            onHide: function (currEvent) {
+                $(currEvent.el).removeClass('activeDatePicker');
+            },
+        };
+
+        $(`#${modalId}`).find('.air-datepicker[data-date-format="yyyy"]').flatpickr({
+            ...commonOptions
+        });
+
+        // Datepicker for month and day only
+        $(`#${modalId}`).find('.air-datepicker:not([data-date-format]):not([data-isonlymonthday])').flatpickr({
+            ...commonOptions,
+            dateFormat: 'mm/dd/yyyy',
+            view: 'days',
+        });
+
+        // Datepicker for month and day only with restricted year range
+        $(`#${modalId}`).find('.air-datepicker[data-isonlymonthday="true"]').flatpickr({
+            ...commonOptions,
+            dateFormat: 'dd/mm',
+            view: 'months',
+            //minDate: new Date(),
+            maxDate: new Date(new Date().getFullYear(), 11, 31),
+        });
+    },
     updatenavigation: function (nav) {
         $('.nav-item').removeClass('active');
         $('#li-nav-' + nav).addClass('active');

@@ -1,4 +1,3 @@
-
 var mrof = {
     apiDataCount: 0,
     recordId: null,//this is null if new record is being created or set the id here...
@@ -142,7 +141,7 @@ var mrof = {
         $('.select2').select2({
             width: '100%'
         });
-        common.renderDate();
+        common.renderDate(mrof.containerId);
         if (mrof.recordId != '-1')
             mrof.fillinform();
 
@@ -540,7 +539,7 @@ var mrof = {
     },
     __loadTemplates: function () {
         $('body').append('<div id="__mfroTemplateContainer" style="display:none;"></div>');
-        $('#__mfroTemplateContainer').load('../xobni-mrof/mrof-templates.html');
+        $('#__mfroTemplateContainer').load('../app-assets/xobni-mrof/mrof-templates.html');
     }
 }
 mrof.__loadTemplates();
